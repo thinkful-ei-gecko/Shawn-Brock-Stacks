@@ -1,4 +1,5 @@
 const _Node = require('./node');
+const stackHelpers = require('./helpers');
 
 class Stack {
   constructor() {
@@ -59,10 +60,24 @@ class Queue {
 }
 
 function main() {
-  let LL = new Stack();
+  let Startrek = new Stack();
   let QQ = new Queue();
 
-  LL.push("bob", 3);
-  console.log(LL);
+  Startrek.push("3");
+  Startrek.push("*");
+  Startrek.push("4");
+  Startrek.push("/");
+  Startrek.push("(");
+  Startrek.push("4");
+  Startrek.push("-");
+  Startrek.push("2");
+  Startrek.push(")");
+  Startrek.push(")");
+  Startrek.push(")");
+
+
+
+  console.log(stackHelpers.matchPar(Startrek));
+  //console.log(LL);
 }
 main();
