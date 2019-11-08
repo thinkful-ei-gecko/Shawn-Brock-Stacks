@@ -16,6 +16,10 @@ class Stack {
   }
 
   pop() {
+    if(this.top === null){
+      return;
+    }
+
     const node = this.top;
     this.top = node.next;
     return node.data;
@@ -61,25 +65,25 @@ class Queue {
 //BEGINNING OF ASSIGNMENT
 const stackHelpers = {
   peek(stack) {
-    return stack.top;
+    return stack.top.data;
   },
 
   isEmpty(stack) {
     if (stack.top === null) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   },
 
   display(stack) {
     let currNode = stack.top;
     let currPos = 1;
     while (currNode !== null) {
-      console.log("pos:" + currPos);
+      //console.log("pos:" + currPos);
       console.log("value:" + currNode.data);
-      console.log(
-        "next:" + (currNode.next !== null ? currNode.next.data : null)
-      );
+      //console.log(
+      //  "next:" + (currNode.next !== null ? currNode.next.data : null)
+      //);
       currNode = currNode.next;
       currPos += 1;
     }
@@ -111,7 +115,7 @@ const stackHelpers = {
         eqStack.push(string[i]);
       }
       return eqStack;
-    }
+    };
 
     let stack = this.eqToStack(string);
     let openPar = 0;
@@ -160,18 +164,24 @@ const stackHelpers = {
     while(!this.isEmpty(stack)){
       let top = stack.pop();
 
-      while(!this.isEmpty(stack) && this.peek(stack) > top){
+      while(!this.isEmpty(sortedStack) && (this.peek(sortedStack)) < top){
         stack.push(sortedStack.pop());
       }
       sortedStack.push(top);
     }
 
-    console.log(JSON.stringify(stack));
+    //console.log(JSON.stringify(sortedStack));
+    //console.log(JSON.stringify(stack));
+    //return sortedStack;
 
-    while(!this.isEmpty(sortedStack)){
+
+   /*  while(!this.isEmpty(sortedStack)){
       stack.push(sortedStack.pop());
-    }
-    console.log(JSON.stringify(stack));
+    }  */
+    this.display(sortedStack);
+    //this.display(stack);
+
+    return stack;
   }
 
 };
@@ -189,7 +199,8 @@ function main() {
   Startrek.push("1");
   Startrek.push("0");
 
-  console.log(stackHelpers.sort(Startrek))
+  stackHelpers.sort(Startrek);
+  //stackHelpers.display(stackHelpers.sort(Startrek));
   //console.log(stackHelpers.matchPar(Startrek));
   //console.log(stackHelpers.matchPar('((3*2)*(5/2))/2))'));
   //console.log(LL);
