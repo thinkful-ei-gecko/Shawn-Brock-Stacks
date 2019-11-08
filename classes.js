@@ -73,11 +73,14 @@ function main() {
   Startrek.push("2");
   Startrek.push(")");
   Startrek.push(")");
-  Startrek.push(")");
 
 
 
-  console.log(stackHelpers.matchPar(Startrek));
+
+
+  console.log(stackHelpers.matchPar('((3*2)*(5/2))/2))'));
   //console.log(LL);
 }
 main();
+
+module.exports = classes;
