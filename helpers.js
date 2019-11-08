@@ -66,8 +66,9 @@ const stackHelpers = {
 
   isEmpty(stack) {
     if (stack.top === null) {
-      return "There is no stack";
+      return false;
     }
+    return true;
   },
 
   display(stack) {
@@ -155,19 +156,22 @@ const stackHelpers = {
 
   sort(stack){
     let sortedStack = new Stack();
-    let temp;
 
-    while(current !== null){
-      if(current.data > current.next.data){
-        temp = current.data;
-        stack.top.pop()
-        sortedStack.push(temp);
+    while(!this.isEmpty(stack)){
+      let top = stack.pop();
+
+      while(!this.isEmpty(stack) && this.peek(stack) > top){
+        stack.push(sortedStack.pop());
       }
-      else{
-        c
-      }
+      sortedStack.push(top);
     }
-    return sortedStack;
+
+    console.log(JSON.stringify(stack));
+
+    while(!this.isEmpty(sortedStack)){
+      stack.push(sortedStack.pop());
+    }
+    console.log(JSON.stringify(stack));
   }
 
 };
