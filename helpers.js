@@ -186,6 +186,27 @@ const stackHelpers = {
 
 };
 
+function ophidianBank(people) { 
+  let q = new Queue();
+  for(let i = 0; i < people.length; i++){
+    q.enqueue(people[i])
+  }
+  
+  while(!stackHelpers.isEmpty(q)){
+    let person = q.dequeue()
+    console.log(`serving ${person}`)
+    if(Math.random() <= 0.25) {
+      q.enqueue(person)
+    } 
+  }
+}
+let people = [
+  'Brock',
+  'Tom',
+  'Bob', 
+  'Devilman'
+];
+ophidianBank(people);
 
 
 function main() {
@@ -199,12 +220,11 @@ function main() {
   Startrek.push("1");
   Startrek.push("0");
 
-  stackHelpers.sort(Startrek);
+  //stackHelpers.sort(Startrek);
   //stackHelpers.display(stackHelpers.sort(Startrek));
   //console.log(stackHelpers.matchPar(Startrek));
   //console.log(stackHelpers.matchPar('((3*2)*(5/2))/2))'));
   //console.log(LL);
 }
-main();
 
 module.exports = stackHelpers;
